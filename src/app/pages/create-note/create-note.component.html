@@ -1,0 +1,22 @@
+<form [formGroup]="noteForm" (ngSubmit)="onSubmit()" (change)="markDirty()">
+  <label>
+    Title:
+    <input type="text" formControlName="title" />
+  </label>
+
+  <label>
+    Body:
+    <textarea formControlName="body"></textarea>
+  </label>
+
+  <div formArrayName="topics">
+    <div *ngFor="let topicCtrl of topics.controls; let i = index">
+      <input type="text" [formControlName]="i" />
+      <button type="button" (click)="removeTopic(i)">Remove</button>
+    </div>
+  </div>
+
+  <button type="button" (click)="addTopic()">Add Topic</button>
+  <br />
+  <button type="submit" [disabled]="noteForm.invalid">Create Note</button>
+</form>

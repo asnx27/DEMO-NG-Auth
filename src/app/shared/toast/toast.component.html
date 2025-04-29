@@ -1,0 +1,7 @@
+<div
+  *ngIf="toastService.message$ | async as message"
+  class="toast"
+  [ngClass]="toastService.type$ | async"
+>
+  {{ message }}
+</div>

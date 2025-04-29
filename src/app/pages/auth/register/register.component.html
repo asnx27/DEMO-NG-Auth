@@ -1,17 +1,34 @@
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
-  <label for="email">Email:</label>
-  <input type="text" id="email" formControlName="email" />
-  <app-form-error
-    [control]="registerForm.get('email')"
-    fieldName="Email"
-  ></app-form-error>
+<form
+  [formGroup]="registerForm"
+  (ngSubmit)="onSubmit()"
+  enctype="multipart/form-data"
+  class="register-form"
+>
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input id="name" type="text" formControlName="name" />
+    <app-form-error [control]="registerForm.get('name')!" />
+  </div>
 
-  <label for="password">Password:</label>
-  <input type="password" id="password" formControlName="password" />
-  <app-form-error
-    [control]="registerForm.get('password')"
-    fieldName="Password"
-  ></app-form-error>
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input id="email" type="email" formControlName="email" />
+    <app-form-error [control]="registerForm.get('email')!" />
+  </div>
 
-  <button type="submit" [disabled]="registerForm.invalid">Register</button>
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input id="password" type="password" formControlName="password" />
+    <app-form-error [control]="registerForm.get('password')!" />
+  </div>
+
+  <div class="form-group">
+    <label for="image">Profile Image:</label>
+    <input id="image" type="file" (change)="onImageChange($event)" />
+    <app-form-error [control]="registerForm.get('image')!" />
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" [disabled]="registerForm.invalid">Register</button>
+  </div>
 </form>

@@ -1,0 +1,18 @@
+<nav class="nav-links">
+  <a
+    routerLink="/"
+    routerLinkActive="active-link"
+    [routerLinkActiveOptions]="{ exact: true }"
+    >Home</a
+  >
+  <a routerLink="/notes" routerLinkActive="active-link">Notes</a>
+  <a routerLink="/users" routerLinkActive="active-link">Users</a>
+
+  <a *ngIf="!isLoggedIn()" routerLink="/login" routerLinkActive="active-link"
+    >Login</a
+  >
+  <a *ngIf="!isLoggedIn()" routerLink="/register" routerLinkActive="active-link"
+    >Register</a
+  >
+  <a *ngIf="isLoggedIn()" (click)="logout()">Logout</a>
+</nav>
